@@ -7,7 +7,7 @@ def get_top_words(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         text = file.read()
 
-    # Manually define a list of German stop words
+    # Manually defined list of German stop words
     german_stop_words = [
         "aber", "alle", "allem", "allen", "aller", "alles", "als", "also", "am", "an", "ander", "andere", "anderem",
         "anderen", "anderer", "anderes", "anderm", "andern", "anderr", "anders", "auch", "auf", "aus", "bei", "bin",
@@ -36,10 +36,8 @@ def get_top_words(file_path):
     feature_names = vectorizer.get_feature_names_out()
     tfidf_scores = tfidf_matrix.toarray()[0]
 
-    # Combine feature names and corresponding TF-IDF scores into a dictionary
     words_and_weights = dict(zip(feature_names, tfidf_scores))
 
-    # Sort the dictionary by TF-IDF scores in descending order
     sorted_words_and_weights = sorted(words_and_weights.items(), key=lambda x: x[1], reverse=True)
 
     return sorted_words_and_weights
@@ -52,12 +50,12 @@ def create_wordcloud(file_path):
 
     plt.figure(figsize=(12, 6))
     
-    # Display the word cloud
+    # Displaying the word cloud
     plt.subplot(1, 2, 1)
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis('off')
 
-    # Display the top words and their weights
+    # Displaying the top words and their weights
     plt.subplot(1, 2, 2)
     top_words = get_top_words(file_path)
     words, weights = zip(*top_words[:10])  # Display top 10 words
@@ -69,10 +67,10 @@ def create_wordcloud(file_path):
     plt.show()
 
 def main():
-    # Define the file paths
+    # Defining the file paths
     text_files = ["file1.txt", "file2.txt"]
 
-    # Analyze each text file and create word cloud with top words
+    # Analyzing each text file and creating a word cloud with the top words
     for file_path in text_files:
         create_wordcloud(file_path)
 
