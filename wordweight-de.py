@@ -58,7 +58,7 @@ def create_wordcloud(file_path):
     # Displaying the top words and their weights
     plt.subplot(1, 2, 2)
     top_words = get_top_words(file_path)
-    words, weights = zip(*top_words[:10])  # Display top 10 words
+    words, weights = zip(*top_words[:10])  # Displaying the top 10 words
     plt.barh(words, weights, color='skyblue')
     plt.xlabel('TF-IDF Score')
     plt.title('Top Words and Their TF-IDF Scores')
